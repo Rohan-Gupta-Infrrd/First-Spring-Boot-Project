@@ -5,14 +5,21 @@ import java.util.UUID;
 
 import com.rohangupta029.demo.model.Student;
 import com.rohangupta029.demo.DAO.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+
+@Service
 
 public class StudentService {
 
+	
 	private final StudentDAO studentdao;
 	
 	
-	
-	public StudentService(StudentDAO studentdao) {
+	@Autowired
+	public StudentService(@Qualifier("fakeDao")StudentDAO studentdao) {
 		super();
 		this.studentdao = studentdao;
 	}

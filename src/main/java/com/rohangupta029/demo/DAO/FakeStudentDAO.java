@@ -8,9 +8,13 @@ import com.rohangupta029.demo.model.Student;
 import java.util.HashMap;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
+@Repository("fakeDao")
 public class FakeStudentDAO implements StudentDAO {
 
 	private final HashMap<UUID, Student> database;
+	
 	
 
 
@@ -18,6 +22,11 @@ public class FakeStudentDAO implements StudentDAO {
 		//super();
 		//this.database = database;
 		database= new HashMap<>();
+		UUID studentid=UUID.randomUUID();
+		database.put(studentid, new Student(
+				studentid,14,"Rohan","Gupta","Computer Science"
+				)
+					);
 	}
 
 	@Override
