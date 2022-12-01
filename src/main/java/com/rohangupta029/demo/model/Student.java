@@ -2,21 +2,33 @@ package com.rohangupta029.demo.model;
 
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Student {
-	private final UUID id;
-	private final int age;
+	private UUID id;
+	private int age;
 	private String Firstname;
 	private String Lastname;
 	private String course;
 	
 	
-	public Student(UUID id, int age, String firstname, String lastname, String course) {
+	public Student(@JsonProperty("id") UUID id, @JsonProperty("age") int age, @JsonProperty("firstname")String firstname, @JsonProperty("lastname")String lastname, @JsonProperty("course") String course) {
 		super();
 		this.id = id;
 		this.age = age;
 		Firstname = firstname;
 		Lastname = lastname;
 		this.course = course;
+	}
+
+	
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 

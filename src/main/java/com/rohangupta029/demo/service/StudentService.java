@@ -19,14 +19,15 @@ public class StudentService {
 	
 	
 	@Autowired
-	public StudentService(@Qualifier("fakeDao")StudentDAO studentdao) {
+	public StudentService(@Qualifier("MongoDBDao")StudentDAO studentdao) {
 		super();
 		this.studentdao = studentdao;
 	}
 
-	public int PersistNewStudent(UUID studentid, Student student)
+	public int persistNewStudent(UUID studentid, Student student)
 	{
 		UUID studentuuid= studentid==null? UUID.randomUUID():studentid;
+		student.setId(studentid);
 		
 		return studentdao.InsertNewStudent(studentuuid, student);
 		
